@@ -2,16 +2,20 @@ public class MyLine {
     private MyPoint begin;
     private MyPoint end;
 
+
+    // Constuctor that uses individual coordinates
     public MyLine(int x1, int y1, int x2, int y2) {
         this.begin = new MyPoint(x1, y1);
         this.end = new MyPoint(x2, y2);
     }
 
+    // Constructor that uses two MyPoint objects
     public MyLine(MyPoint begin, MyPoint end) {
         this.begin = begin;
         this.end = end;
     }
 
+    // Getters and setters
     public MyPoint getBegin() {
         return begin;
     }
@@ -76,10 +80,13 @@ public class MyLine {
         end.setXY(x, y);
     }
 
+
+    // Calculates the length of the line 
     public double getLength() {
         return begin.distance(end);
     }
 
+    // Calculates the gradient/angle of the line
     public double getGradient() {
         int xDiff = end.getX() - begin.getX();
         int yDiff = end.getY() - begin.getY();

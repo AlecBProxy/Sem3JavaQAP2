@@ -2,11 +2,13 @@ public class MyPoint {
     private int x;
     private int y;
 
+    // Constructor with two parameters
     public MyPoint(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    // Getters and setters
     public int getX() {
         return x;
     }
@@ -32,6 +34,7 @@ public class MyPoint {
         this.y = y;
     }
 
+    // Calculates the distance between another MyPoint object 
     public double distance(MyPoint other) {
         int xDiff = this.x - other.x;
         int yDiff = this.y - other.y;

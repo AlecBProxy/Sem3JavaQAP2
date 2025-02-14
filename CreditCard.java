@@ -3,6 +3,8 @@ public class CreditCard {
     private Money creditLimit;
     private Person owner;
 
+
+    //Constructor (Initialize "Person" with credit limit)
     public CreditCard(Person newCardHolder, Money limit) {
         this.owner = newCardHolder;
         this.creditLimit = new Money(limit); 
@@ -17,10 +19,12 @@ public class CreditCard {
         return new Money(creditLimit);
     }
 
+    // Get the details of the card owner in string form
     public String getPersonals() {
         return owner.toString();
     }
 
+    // Charge the credit card
     public void charge(Money amount) {
         Money newBalance = balance.add(amount);
         if (newBalance.compareTo(creditLimit) <= 0) {
