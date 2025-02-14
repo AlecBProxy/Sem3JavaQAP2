@@ -1,0 +1,42 @@
+public class Money {
+    private long dollars;
+    private long cents;
+
+    public Money(double amount) {
+        dollars = (long) amount;
+        cents = Math.round((amount - dollars) * 100);
+    }
+
+    // Copying Constructor
+    public Money(Money other) {
+        this.dollars = other.dollars;
+        this.cents = other.cents;
+    }
+
+    public Money add(Money other) {
+        long totalCents = this.cents + other.cents;
+        long totalDollars = this.dollars + other.dollars + (totalCents / 100);
+        totalCents = totalCents % 100;
+        return new Money(totalDollars + (totalCents / 100.0));
+    }
+
+    public Money subtract(Money other) {
+        long totalCents = (this.dollars * 100 + this.cents) - (other.dollars * 100 + other.cents);
+        if (totalCents < 0) totalCents = 0; // Prevents working with a negative balance
+        return new Money(totalCents / 100.0);
+    }
+
+    public int compareTo(Money other) {
+        long thisTotal = this.dollars * 100 + this.cents;
+        long otherTotal = other.dollars * 100 + other.cents;
+        return Long.compare(thisTotal, otherTotal);
+    }
+
+    public boolean equals(Money other) {
+        return this.dollars == other.dollars && this.cents == other.cents;
+    }
+
+    public String toString() {
+        return "$" + dollars + "." + (cents < 10 ? "0" + cents : cents);
+    }
+}
